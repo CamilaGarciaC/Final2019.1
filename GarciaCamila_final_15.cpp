@@ -9,7 +9,12 @@ using namespace std;
 
 const double m = 7294.29;
 const double q = 2.0;
-double dt = 0.001;
+double dt = 0.1;
+double x = 1;
+double y = 0;
+double vx = 0;
+double vy = 1;
+double t = 0;
 
 double rad(double teta){
 	return PI*teta/180.0;
@@ -61,4 +66,14 @@ void RungeKutta(double &t, double &x, double &y, double &vx, double &vy, double 
 	vy+=(primerpaso4+2*(segundopaso4+tercerpaso4)+cuartopaso4)*(1/6.0);
 }
 
-
+int main (){
+	ofstream datos1;
+	datos1.open("datos.txt");	
+	datos1 << t <<" "<<x<<" "<<y<<endl;
+	for (double t=0; t<10; t+=dt){
+		RungeKutta(t, x, y, vx, vy, m, q);
+		dato1s << t <<" "<<x<<" "<<y<<endl;
+			break;
+		}
+	}
+	datos1.close();
